@@ -1,0 +1,19 @@
+{
+  "name": "CRM · Услуги ИИ",
+  "short_name": "CRM ИИ",
+  "description": "Управление заявками, ТЗ и клиентами студии Услуги ИИ",
+  "start_url": "./crm.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f8",
+  "theme_color": "#17191c",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
