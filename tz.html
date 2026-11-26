@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Техническое задание (ТЗ) — Услуги ИИ (@ai_anastasiy)</title>
+  <meta name="description" content="Подробная форма технического задания для создания сайта-визитки, веб-приглашения, Telegram-бота или ИИ-агента." />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#17191c',
+            slatebody: '#777b86',
+            faintslate: '#a3a6af',
+            hairline: '#e7e8ea',
+            lightband: '#f7f7f8',
+            palepanel: '#fafafb',
+            peachcard: '#fbe1d1',
+            peachink: '#5d2a1a',
+            proofblue: '#d3e3fc',
+          },
+          fontFamily: {
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      background-color: #f7f7f8;
+      color: #17191c;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hidden { display: none; }
+    @media (max-width: 639px) {
+      input, select, textarea { font-size: 16px !important; }
+    }
+    .font-serif-ed { font-family: "Newsreader", Georgia, serif; font-weight: 400; }
+    .pastel-hero {
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .blob-1 {
+      position: absolute; top: -80px; left: 5%; width: 420px; height: 320px;
+      background: radial-gradient(circle, rgba(214,206,245,0.55) 0%, rgba(214,206,245,0) 70%);
+      filter: blur(65px); pointer-events: none;
+    }
+    .blob-2 {
+      position: absolute; top: 10px; right: 5%; width: 420px; height: 320px;
+      background: radial-gradient(circle, rgba(251,225,209,0.7) 0%, rgba(251,225,209,0) 70%);
+      filter: blur(70px); pointer-events: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-16">
+
+  <!-- ШАПКА -->
+  <header class="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-[960px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <a href="index.html" class="inline-flex items-center gap-2.5 text-ink hover:opacity-80 transition-opacity">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#17191c" stroke-width="1.4" aria-hidden="true">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+          <path d="M8 15.5L12 8.5L16 15.5" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="12" cy="14" r="1" fill="#17191c" />
+        </svg>
+        <span class="text-[15px] font-medium">Услуги ИИ</span>
+      </a>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="index.html" class="h-9 px-3 sm:px-3.5 rounded-full bg-lightband hover:bg-hairline text-[13px] text-ink inline-flex items-center whitespace-nowrap transition">
+          ← На сайт
+        </a>
+        <a href="https://t.me/ai_anastasiy" target="_blank" rel="noopener noreferrer" class="h-9 px-3 sm:px-3.5 rounded-full bg-ink text-white text-[13px] inline-flex items-center whitespace-nowrap hover:opacity-90 transition">
+          <span class="sm:hidden">Telegram</span>
+          <span class="hidden sm:inline">Помочь с ТЗ в Telegram</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ВСТУПЛЕНИЕ -->
+  <section class="pastel-hero border-b border-hairline py-10 sm:py-14">
+    <div class="blob-1" aria-hidden="true"></div>
+    <div class="blob-2" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-[820px] mx-auto px-4 sm:px-6 text-center">
+      <span class="inline-block px-3 py-1 rounded-full bg-peachcard text-peachink text-[12px] font-medium mb-3">
+        Бриф для запуска проекта · 5–10 минут
+      </span>
+      <h1 class="font-serif-ed text-3xl sm:text-5xl text-ink leading-[1.15] tracking-tight">
+        Техническое задание на сайт или бота
+      </h1>
+      <p class="mt-3 text-[16px] sm:text-[18px] text-slatebody max-w-[620px] mx-auto leading-relaxed">
+        Ответьте своими словами на понятные вопросы ниже — этого хватит, чтобы точно рассчитать стоимость и собрать готовый проект с помощью ИИ. Необязательные поля можно пропустить.
+      </p>
+    </div>
+  </section>
+
+  <main class="max-w-[820px] mx-auto px-4 sm:px-6 pt-8">
+    <!-- ФОРМА ТЗ -->
+    <form id="tzForm" class="space-y-6" novalidate>
+      <input type="text" id="tzHoneypot" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+      <input type="hidden" id="linkedLeadId" value="" />
+
+      <!-- БЛОК 1: ТИП ПРОЕКТА И КОНТАКТЫ -->
+      <section class="bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="flex items-center justify-between gap-2 pb-3 border-b border-hairline">
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-faintslate">Раздел 01</span>
+            <h2 class="font-serif-ed text-2xl text-ink">Формат проекта и контакты</h2>
+          </div>
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-lightband text-slatebody">Обязательно</span>
+        </div>
+
+        <div>
+          <label class="block text-[13px] font-medium text-ink mb-2">Что именно нужно создать?</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5" id="projectTypeSelector">
+            <button type="button" data-type="site" class="type-btn text-left p-3.5 rounded-2xl border-2 border-ink bg-palepanel transition cursor-pointer">
+              <div class="text-[14px] font-medium text-ink">Сайт-визитка / Лендинг</div>
+              <div class="text-[12px] text-slatebody mt-0.5">от 2 900 ₽ · 1–2 дня</div>
+            </button>
+            <button type="button" data-type="invite" class="type-btn text-left p-3.5 rounded-2xl border border-hairline bg-white hover:border-ink/40 transition cursor-pointer">
+              <div class="text-[14px] font-medium text-ink">Приглашение на событие</div>
+              <div class="text-[12px] text-slatebody mt-0.5">Свадьба / праздник · от 2 900 ₽</div>
+            </button>
+            <button type="button" data-type="bot" class="type-btn text-left p-3.5 rounded-2xl border border-hairline bg-white hover:border-ink/40 transition cursor-pointer">
+              <div class="text-[14px] font-medium text-ink">Telegram-бот / ИИ-агент</div>
+              <div class="text-[12px] text-slatebody mt-0.5">Ответы и заявки · от 4 500 ₽</div>
+            </button>
+            <button type="button" data-type="storefront" class="type-btn text-left p-3.5 rounded-2xl border border-hairline bg-white hover:border-ink/40 transition cursor-pointer">
+              <div class="text-[14px] font-medium text-ink">Сайт-витрина / портал</div>
+              <div class="text-[12px] text-slatebody mt-0.5">Несколько страниц · от 5 900 ₽</div>
+            </button>
+            <button type="button" data-type="custom" class="type-btn text-left p-3.5 rounded-2xl border border-hairline bg-white hover:border-ink/40 transition cursor-pointer">
+              <div class="text-[14px] font-medium text-ink">Связка или другой проект</div>
+              <div class="text-[12px] text-slatebody mt-0.5">Сайт + бот / веб-сервис</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="clientName" class="block text-[13px] text-slatebody mb-1.5">Ваше имя *</label>
+            <input id="clientName" required type="text" placeholder="Например, Анастасия" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="clientContact" class="block text-[13px] text-slatebody mb-1.5">Контакт для связи (Telegram, телефон, email) *</label>
+            <input id="clientContact" required type="text" placeholder="@username или +7 ..." class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="projectName" class="block text-[13px] text-slatebody mb-1.5">Название бренда / проекта / события</label>
+            <input id="projectName" type="text" placeholder="Например, Студия «Воздух» или Свадьба Анны и Максима" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="projectNiche" class="block text-[13px] text-slatebody mb-1.5">Ниша / сфера деятельности</label>
+            <input id="projectNiche" type="text" placeholder="Психология, кофейня, автосервис, обучение..." class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 2: СМЫСЛЫ, АУДИТОРИЯ И ДИЗАЙН -->
+      <section class="bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-faintslate">Раздел 02</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Смысл, аудитория и визуальный стиль</h2>
+        </div>
+
+        <div>
+          <label for="projectEssence" class="block text-[13px] font-medium text-ink mb-1.5">Чем вы занимаетесь и в чём главная ценность для клиента?</label>
+          <textarea id="projectEssence" rows="3" placeholder="Опишите простыми словами: какие услуги или товары предлагаете, чем отличаетесь, почему к вам обращаются." class="w-full p-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="targetAudience" class="block text-[13px] text-slatebody mb-1.5">Кто целевая аудитория (кто будет заходить)?</label>
+            <textarea id="targetAudience" rows="2" placeholder="Например: владельцы малого бизнеса, невесты и гости, ученики..." class="w-full p-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+          </div>
+          <div>
+            <label for="mainGoal" class="block text-[13px] text-slatebody mb-1.5">Главное действие пользователя</label>
+            <textarea id="mainGoal" rows="2" placeholder="Например: написать в Telegram, оставить заявку, записаться на время, подтвердить RSVP" class="w-full p-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+          </div>
+        </div>
+
+        <div>
+          <span class="block text-[13px] font-medium text-ink mb-2">Характер и подача дизайна</span>
+          <div class="flex flex-wrap gap-2">
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-palepanel border border-hairline text-[13px] cursor-pointer">
+              <input type="checkbox" class="tone-check accent-[#17191c]" value="Спокойный минимализм" />
+              <span>Спокойный минимализм</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-palepanel border border-hairline text-[13px] cursor-pointer">
+              <input type="checkbox" class="tone-check accent-[#17191c]" value="Тёплый и душевный" />
+              <span>Тёплый и душевный</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-palepanel border border-hairline text-[13px] cursor-pointer">
+              <input type="checkbox" class="tone-check accent-[#17191c]" value="Деловой и строгий" />
+              <span>Деловой и строгий</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-palepanel border border-hairline text-[13px] cursor-pointer">
+              <input type="checkbox" class="tone-check accent-[#17191c]" value="Яркий и современный" />
+              <span>Яркий и современный</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-palepanel border border-hairline text-[13px] cursor-pointer">
+              <input type="checkbox" class="tone-check accent-[#17191c]" value="Тёмная премиальная тема" />
+              <span>Тёмная тема</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="colorPrefs" class="block text-[13px] text-slatebody mb-1.5">Пожелания по цветам и шрифтам</label>
+            <input id="colorPrefs" type="text" placeholder="Например: бежевый, графит, без кислотных цветов" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="references" class="block text-[13px] text-slatebody mb-1.5">Ссылки на примеры, которые нравятся</label>
+            <input id="references" type="text" placeholder="Сайты, каналы или боты для ориентира" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 3А: СПЕЦИФИКА ДЛЯ САЙТА / ВИТРИНЫ -->
+      <section id="section-site" class="dynamic-section bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-faintslate">Раздел 03 · Структура сайта</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Экраны, разделы и функции сайта</h2>
+        </div>
+
+        <div>
+          <span class="block text-[13px] font-medium text-ink mb-2">Какие блоки должны быть на странице?</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[13px]">
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Первый экран с главным предложением и кнопкой" checked />
+              <span>Первый экран с оффером и кнопкой</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="О специалисте / о компании" checked />
+              <span>О специалисте / о компании</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Услуги, тарифы и прайс-лист" checked />
+              <span>Услуги, тарифы и прайс-лист</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Примеры работ / кейсы / портфолио" />
+              <span>Примеры работ / кейсы</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Этапы работы (шаги от заявки до запуска)" />
+              <span>Этапы работы</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Интерактивный калькулятор или квиз" />
+              <span>Интерактивный калькулятор / квиз</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Отзывы клиентов" />
+              <span>Отзывы клиентов</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Частые вопросы (FAQ)" />
+              <span>Частые вопросы (FAQ)</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Форма заявки с отправкой в Telegram / CRM" checked />
+              <span>Форма заявки в Telegram / CRM</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="site-block accent-[#17191c]" value="Карта проезда, адрес и часы работы" />
+              <span>Карта проезда и адрес</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="siteLeadDestination" class="block text-[13px] text-slatebody mb-1.5">Куда вести заявки и клики с кнопок?</label>
+            <input id="siteLeadDestination" type="text" placeholder="Например: Telegram @username, CRM, МАХ, почта" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="siteHosting" class="block text-[13px] text-slatebody mb-1.5">Где планируем размещать сайт?</label>
+            <select id="siteHosting" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink">
+              <option value="Бесплатно на GitHub Pages">Бесплатно на GitHub Pages</option>
+              <option value="Подключим свой домен (.ru / .com)">Подключим свой домен (.ru / .com)</option>
+              <option value="Перенесём на мой хостинг">Перенесём на мой хостинг</option>
+              <option value="Нужна ваша рекомендация">Нужна ваша рекомендация</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 3Б: СПЕЦИФИКА ДЛЯ ПРИГЛАШЕНИЯ -->
+      <section id="section-invite" class="dynamic-section hidden bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-peachink">Раздел 03 · Детали события</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Параметры веб-приглашения</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="inviteDate" class="block text-[13px] text-slatebody mb-1.5">Дата и время начала</label>
+            <input id="inviteDate" type="text" placeholder="Например: 24 августа 2026, сбор в 15:30" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="inviteVenue" class="block text-[13px] text-slatebody mb-1.5">Место проведения и адрес</label>
+            <input id="inviteVenue" type="text" placeholder="Название площадки, город, ссылка на карту" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+        </div>
+
+        <div>
+          <label for="inviteTimeline" class="block text-[13px] text-slatebody mb-1.5">Тайминг (расписание дня) и дресс-код</label>
+          <textarea id="inviteTimeline" rows="3" placeholder="15:30 — Сбор гостей, 16:30 — Церемония, 18:00 — Ужин. Дресс-код: пастельные оттенки..." class="w-full p-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+        </div>
+
+        <div>
+          <span class="block text-[13px] font-medium text-ink mb-2">Какие вопросы добавить в анкету гостя (RSVP)?</span>
+          <div class="flex flex-wrap gap-2 text-[13px]">
+            <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="invite-rsvp accent-[#17191c]" value="Подтверждение участия" checked />
+              <span>Подтверждение участия</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="invite-rsvp accent-[#17191c]" value="Будет ли пара (+1)" />
+              <span>Будет ли +1 / дети</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="invite-rsvp accent-[#17191c]" value="Нужен ли трансфер" />
+              <span>Трансфер</span>
+            </label>
+            <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="invite-rsvp accent-[#17191c]" value="Предпочтения по еде и напиткам" />
+              <span>Еда / напитки / аллергии</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 3В: СПЕЦИФИКА ДЛЯ БОТА / ИИ-АГЕНТА -->
+      <section id="section-bot" class="dynamic-section hidden bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-faintslate">Раздел 03 · Логика автоматизации</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Сценарии Telegram-бота или ИИ-агента</h2>
+        </div>
+
+        <div>
+          <span class="block text-[13px] font-medium text-ink mb-2">Что должен уметь бот?</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[13px]">
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="bot-feature accent-[#17191c]" value="Отвечать на частые вопросы по прайсу и услугам" checked />
+              <span>Отвечать по прайсу и FAQ (ИИ)</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="bot-feature accent-[#17191c]" value="Собирать имя, контакт и заявку в ваш Telegram/CRM" checked />
+              <span>Собирать контакты и заявки</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="bot-feature accent-[#17191c]" value="Записывать на удобную дату и время" />
+              <span>Записывать на дату / время</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="bot-feature accent-[#17191c]" value="Проводить квиз / анкетирование клиента" />
+              <span>Проводить квиз / опрос</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="bot-feature accent-[#17191c]" value="Выдавать полезный файл / гайд после подписки" />
+              <span>Выдавать файл / лид-магнит</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-palepanel border border-hairline cursor-pointer">
+              <input type="checkbox" class="bot-feature accent-[#17191c]" value="Переводить диалог на живого менеджера" />
+              <span>Передавать диалог человеку</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="botKnowledge" class="block text-[13px] font-medium text-ink mb-1.5">База знаний (на основе чего бот отвечает)</label>
+          <textarea id="botKnowledge" rows="3" placeholder="Вставьте основные цены, график, частые вопросы или укажите, что пришлёте файл/таблицу отдельно" class="w-full p-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="botGuardrails" class="block text-[13px] text-slatebody mb-1.5">Строгие ограничения для ИИ</label>
+            <input id="botGuardrails" type="text" placeholder="Например: не обещать скидки, не ставить диагнозы" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="botOutput" class="block text-[13px] text-slatebody mb-1.5">Куда отправлять готовые заявки?</label>
+            <input id="botOutput" type="text" placeholder="Личный Telegram, группа, Google-таблица, CRM" class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 3Г: СПЕЦИФИКА ДЛЯ ДРУГОГО ПРОЕКТА -->
+      <section id="section-custom" class="dynamic-section hidden bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-faintslate">Раздел 03 · Индивидуальная задача</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Механика и интеграции</h2>
+        </div>
+
+        <div>
+          <label for="customSpec" class="block text-[13px] font-medium text-ink mb-1.5">Подробно опишите, как должен работать проект</label>
+          <textarea id="customSpec" rows="4" placeholder="Какие есть роли пользователей, интеграции (оплата, CRM, таблицы, ИИ) и какой результат ожидаете на выходе?" class="w-full p-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+        </div>
+      </section>
+
+      <!-- БЛОК 3.5: ПЛОЩАДКИ, ССЫЛКИ И УСЛУГИ КЛИЕНТА -->
+      <section class="bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-6 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-faintslate">Площадки и прайс для проекта</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Ваши соцсети, сайты и список услуг</h2>
+        </div>
+
+        <div class="space-y-2.5">
+          <label class="block text-[13px] font-medium text-ink">Куда вести клиентов с кнопок? (нажмите на нужные площадки и впишите ссылки/ники)</label>
+          <div class="flex flex-wrap gap-1.5" id="tzSocialQuickChips">
+            <button type="button" data-platform="Telegram" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Telegram</button>
+            <button type="button" data-platform="ВКонтакте" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ ВКонтакте</button>
+            <button type="button" data-platform="Instagram" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Instagram</button>
+            <button type="button" data-platform="МАХ" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ МАХ</button>
+            <button type="button" data-platform="WhatsApp" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ WhatsApp</button>
+            <button type="button" data-platform="Почта" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Почта</button>
+            <button type="button" data-platform="Телефон" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Телефон</button>
+            <button type="button" data-platform="Сайт" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Сайт</button>
+            <button type="button" data-platform="Авито" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Авито</button>
+            <button type="button" data-platform="Яндекс Карты / 2ГИС" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Карты</button>
+            <button type="button" data-platform="YouTube / Rutube" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ YouTube / Rutube</button>
+            <button type="button" data-platform="Другое" class="tz-chip px-3 py-1.5 rounded-full bg-palepanel border border-hairline hover:border-ink text-[12px] text-ink transition cursor-pointer">+ Другое</button>
+          </div>
+          <div id="tzSocialLinksList" class="space-y-2 pt-1"></div>
+        </div>
+
+        <div class="space-y-2.5 pt-2 border-t border-hairline">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <label class="block text-[13px] font-medium text-ink">Какие услуги / товары вы предоставляете и сколько стоит?</label>
+            <button type="button" id="tzAddServiceBtn" class="h-8 px-3.5 rounded-full bg-lightband hover:bg-hairline text-[12px] font-medium text-ink transition cursor-pointer">+ Добавить услугу</button>
+          </div>
+          <div id="tzServicesList" class="space-y-2"></div>
+        </div>
+
+        <div class="pt-2 border-t border-hairline">
+          <label for="legalInfo" class="block text-[13px] text-slatebody mb-1.5">Реквизиты / город для подвала сайта и политики 152-ФЗ (если планируется форма заявок)</label>
+          <input id="legalInfo" type="text" placeholder="Например: г. Москва, Самозанятая / ИП Фамилия И. О., ИНН ..." class="w-full h-11 px-4 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+        </div>
+      </section>
+
+      <!-- БЛОК 4: МАТЕРИАЛЫ, СРОКИ И БЮДЖЕТ -->
+      <section class="bg-white rounded-[24px] border border-hairline p-5 sm:p-8 space-y-5 shadow-sm">
+        <div class="pb-3 border-b border-hairline">
+          <span class="text-[11px] uppercase tracking-wider text-faintslate">Раздел 04</span>
+          <h2 class="font-serif-ed text-2xl text-ink">Материалы, сроки и бюджет</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label for="materialsState" class="block text-[13px] text-slatebody mb-1.5">Тексты и фото</label>
+            <select id="materialsState" class="w-full h-11 px-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink">
+              <option value="Нужна помощь написать с нуля">Нужна помощь написать с нуля</option>
+              <option value="Есть черновики / прайс">Есть черновики / прайс</option>
+              <option value="Все тексты и фото готовы">Все тексты и фото готовы</option>
+            </select>
+          </div>
+          <div>
+            <label for="deadlineTarget" class="block text-[13px] text-slatebody mb-1.5">Желаемый срок запуска</label>
+            <input id="deadlineTarget" type="text" placeholder="Например: за 2–3 дня / к пятнице" class="w-full h-11 px-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+          <div>
+            <label for="budgetEstimate" class="block text-[13px] text-slatebody mb-1.5">Ориентир бюджета, ₽</label>
+            <input id="budgetEstimate" type="number" step="100" value="2900" class="w-full h-11 px-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink" />
+          </div>
+        </div>
+
+        <div>
+          <label for="materialsLink" class="block text-[13px] text-slatebody mb-1.5">Ссылка на папку с материалами (если есть) и дополнительные пожелания</label>
+          <textarea id="materialsLink" rows="2" placeholder="Google / Яндекс Диск, ссылки на соцсети, старый сайт или важные детали..." class="w-full p-3.5 rounded-xl bg-palepanel border border-hairline text-[14px] focus:outline-none focus:border-ink"></textarea>
+        </div>
+
+        <div class="pt-2 space-y-2 border-t border-hairline">
+          <label class="flex items-start gap-2.5 cursor-pointer select-none pt-2">
+            <input id="tzConsent" type="checkbox" required class="mt-1 w-4 h-4 accent-[#17191c] shrink-0 cursor-pointer" />
+            <span class="text-[13px] leading-[1.45] text-slatebody">
+              Даю согласие самозанятой Караяниди А. С. (ИНН 230115428855) на обработку персональных данных в соответствии с <a href="index.html#contact" class="underline text-ink">Политикой обработки ПДн</a> (152-ФЗ).
+            </span>
+          </label>
+        </div>
+
+        <div id="tzError" class="hidden p-3.5 rounded-xl bg-peachcard text-peachink text-[14px]"></div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+          <button type="submit" id="tzSubmitBtn" class="h-12 px-7 rounded-full bg-ink text-white text-[15px] font-medium hover:opacity-90 transition cursor-pointer">
+            Отправить ТЗ
+          </button>
+          <button type="button" onclick="downloadCurrentBriefMd()" class="h-12 px-5 rounded-full bg-lightband hover:bg-hairline text-ink text-[14px] transition cursor-pointer">
+            Скачать черновик (.md)
+          </button>
+        </div>
+      </section>
+    </form>
+
+    <!-- ЭКРАН УСПЕШНОЙ ОТПРАВКИ -->
+    <section id="tzSuccessCard" class="hidden bg-white rounded-[24px] border border-hairline p-6 sm:p-10 shadow-sm space-y-5">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-proofblue text-ink text-[12px] font-medium">
+        ✓ ТЗ сохранено и передано в работу
+      </div>
+      <h2 class="font-serif-ed text-3xl sm:text-4xl text-ink">Спасибо! Техническое задание готово</h2>
+      <p id="tzSuccessSubtitle" class="text-[15px] text-slatebody leading-relaxed">
+        Я уже получила все ответы и скоро свяжусь с вами для подтверждения стоимости и старта. Ниже вы можете скачать готовую копию ТЗ в виде документа.
+      </p>
+
+      <div class="flex flex-wrap gap-2.5 pt-2">
+        <button type="button" onclick="downloadCurrentBriefMd()" class="h-11 px-5 rounded-full bg-ink text-white text-[14px] font-medium hover:opacity-90 transition cursor-pointer">
+          Скачать для ИИ (.md)
+        </button>
+        <button type="button" onclick="downloadCurrentBriefDoc()" class="h-11 px-5 rounded-full bg-lightband hover:bg-hairline text-ink text-[14px] font-medium transition cursor-pointer">
+          Скачать Word (.doc)
+        </button>
+        <button type="button" onclick="copyCurrentBriefPrompt()" class="h-11 px-5 rounded-full bg-peachcard text-peachink text-[14px] font-medium hover:opacity-90 transition cursor-pointer">
+          Скопировать текст ТЗ
+        </button>
+        <a href="index.html" class="h-11 px-5 rounded-full border border-hairline text-ink text-[14px] inline-flex items-center hover:border-ink transition">
+          Вернуться на сайт
+        </a>
+      </div>
+
+      <div class="pt-4 border-t border-hairline">
+        <div class="text-[12px] text-faintslate mb-2">Предпросмотр сформированного ТЗ:</div>
+        <pre id="tzPreviewPre" class="p-4 rounded-2xl bg-palepanel border border-hairline text-[12px] leading-relaxed text-ink whitespace-pre-wrap overflow-x-auto max-h-[340px]"></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const TYPE_LABELS = {
+        site: 'Сайт-визитка / Лендинг',
+        invite: 'Веб-приглашение на событие',
+        bot: 'Telegram-бот / ИИ-агент',
+        storefront: 'Сайт-витрина / несколько страниц',
+        custom: 'Связка или индивидуальный проект'
+      };
+
+      const TYPE_DEFAULT_PRICE = {
+        site: 2900,
+        invite: 2900,
+        bot: 4500,
+        storefront: 5900,
+        custom: 6500
+      };
+
+      let selectedType = 'site';
+      let lastSavedBrief = null;
+
+      function getYandexApiUrl() {
+        let saved = {};
+        try { saved = JSON.parse(localStorage.getItem('ai_crm_settings') || '{}'); } catch {}
+        const globalCfg = window.AI_CRM_CONFIG || {};
+        return (globalCfg.apiUrl || globalCfg.yandexApiUrl || saved.apiUrl || saved.yandexApiUrl || '').trim();
+      }
+
+      function selectProjectType(typeKey, updatePrice = true) {
+        if (!TYPE_LABELS[typeKey]) typeKey = 'site';
+        selectedType = typeKey;
+
+        document.querySelectorAll('.type-btn').forEach((btn) => {
+          const active = btn.dataset.type === typeKey;
+          btn.className = active
+            ? 'type-btn text-left p-3.5 rounded-2xl border-2 border-ink bg-palepanel transition cursor-pointer'
+            : 'type-btn text-left p-3.5 rounded-2xl border border-hairline bg-white hover:border-ink/40 transition cursor-pointer';
+        });
+
+        document.querySelectorAll('.dynamic-section').forEach((sec) => sec.classList.add('hidden'));
+        if (typeKey === 'site' || typeKey === 'storefront') {
+          document.getElementById('section-site').classList.remove('hidden');
+        } else if (typeKey === 'invite') {
+          document.getElementById('section-invite').classList.remove('hidden');
+        } else if (typeKey === 'bot') {
+          document.getElementById('section-bot').classList.remove('hidden');
+        } else {
+          document.getElementById('section-site').classList.remove('hidden');
+          document.getElementById('section-bot').classList.remove('hidden');
+          document.getElementById('section-custom').classList.remove('hidden');
+        }
+
+        if (updatePrice) {
+          const budgetEl = document.getElementById('budgetEstimate');
+          if (budgetEl) budgetEl.value = TYPE_DEFAULT_PRICE[typeKey] || 2900;
+        }
+      }
+
+      document.querySelectorAll('.type-btn').forEach((btn) => {
+        btn.addEventListener('click', () => selectProjectType(btn.dataset.type, true));
+      });
+
+      // Поддержка параметров URL: ?type=bot&lead=123&name=...&contact=...
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('type')) selectProjectType(params.get('type'), true);
+      if (params.get('lead')) document.getElementById('linkedLeadId').value = params.get('lead');
+      if (params.get('name')) document.getElementById('clientName').value = params.get('name');
+      if (params.get('contact')) document.getElementById('clientContact').value = params.get('contact');
+
+      const SOCIAL_PLATFORMS = [
+        'Telegram', 'ВКонтакте', 'Instagram', 'МАХ', 'WhatsApp',
+        'Почта', 'Телефон', 'Сайт', 'Авито', 'Яндекс Карты / 2ГИС',
+        'YouTube / Rutube', 'Другое'
+      ];
+
+      function escAttr(str) {
+        return String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function addSocialLinkRow(platform = 'Telegram', value = '') {
+        const list = document.getElementById('tzSocialLinksList');
+        if (!list) return;
+        const row = document.createElement('div');
+        row.className = 'social-row flex flex-col sm:flex-row items-stretch sm:items-center gap-2 p-2.5 rounded-xl bg-palepanel border border-hairline';
+        const opts = SOCIAL_PLATFORMS.map(p => `<option value="${escAttr(p)}"${p === platform ? ' selected' : ''}>${escAttr(p)}</option>`).join('');
+        row.innerHTML = `
+          <select class="social-platform sm:w-44 h-10 px-3 rounded-lg bg-white border border-hairline text-[13px] focus:outline-none focus:border-ink">${opts}</select>
+          <input type="text" class="social-url flex-1 h-10 px-3 rounded-lg bg-white border border-hairline text-[13px] focus:outline-none focus:border-ink" placeholder="Ссылка, @ник, номер или email" value="${escAttr(value)}" />
+          <button type="button" class="h-9 sm:w-9 px-3 sm:px-0 rounded-lg bg-white border border-hairline text-slatebody hover:text-ink text-[13px] cursor-pointer" title="Удалить">✕</button>
+        `;
+        row.querySelector('button').addEventListener('click', () => row.remove());
+        list.appendChild(row);
+      }
+
+      function addServiceRow(name = '', price = '', note = '') {
+        const list = document.getElementById('tzServicesList');
+        if (!list) return;
+        const row = document.createElement('div');
+        row.className = 'service-row grid grid-cols-1 sm:grid-cols-12 gap-2 p-2.5 rounded-xl bg-palepanel border border-hairline items-center';
+        row.innerHTML = `
+          <input type="text" class="srv-name sm:col-span-5 h-10 px-3 rounded-lg bg-white border border-hairline text-[13px] focus:outline-none focus:border-ink" placeholder="Название услуги / товара" value="${escAttr(name)}" />
+          <input type="text" class="srv-price sm:col-span-3 h-10 px-3 rounded-lg bg-white border border-hairline text-[13px] focus:outline-none focus:border-ink" placeholder="Цена (напр. 2 500 ₽)" value="${escAttr(price)}" />
+          <input type="text" class="srv-note sm:col-span-3 h-10 px-3 rounded-lg bg-white border border-hairline text-[13px] focus:outline-none focus:border-ink" placeholder="Срок / примечание" value="${escAttr(note)}" />
+          <button type="button" class="sm:col-span-1 h-9 rounded-lg bg-white border border-hairline text-slatebody hover:text-ink text-[13px] cursor-pointer" title="Удалить">✕</button>
+        `;
+        row.querySelector('button').addEventListener('click', () => row.remove());
+        list.appendChild(row);
+      }
+
+      document.querySelectorAll('#tzSocialQuickChips .tz-chip').forEach((chip) => {
+        chip.addEventListener('click', () => addSocialLinkRow(chip.dataset.platform, ''));
+      });
+      const addSrvBtn = document.getElementById('tzAddServiceBtn');
+      if (addSrvBtn) addSrvBtn.addEventListener('click', () => addServiceRow());
+      addServiceRow();
+
+      function collectSocialLinks() {
+        return Array.from(document.querySelectorAll('#tzSocialLinksList .social-row')).map(row => ({
+          platform: row.querySelector('.social-platform').value,
+          url: row.querySelector('.social-url').value.trim()
+        })).filter(item => item.url);
+      }
+
+      function collectClientServices() {
+        return Array.from(document.querySelectorAll('#tzServicesList .service-row')).map(row => ({
+          name: row.querySelector('.srv-name').value.trim(),
+          price: row.querySelector('.srv-price').value.trim(),
+          note: row.querySelector('.srv-note').value.trim()
+        })).filter(item => item.name || item.price);
+      }
+
+      function collectBriefData() {
+        const tones = Array.from(document.querySelectorAll('.tone-check:checked')).map(c => c.value);
+        const siteBlocks = Array.from(document.querySelectorAll('.site-block:checked')).map(c => c.value);
+        const inviteRsvp = Array.from(document.querySelectorAll('.invite-rsvp:checked')).map(c => c.value);
+        const botFeatures = Array.from(document.querySelectorAll('.bot-feature:checked')).map(c => c.value);
+
+        const data = {
+          leadId: document.getElementById('linkedLeadId').value.trim() || null,
+          projectType: selectedType,
+          projectTypeLabel: TYPE_LABELS[selectedType] || selectedType,
+          clientName: document.getElementById('clientName').value.trim(),
+          contact: document.getElementById('clientContact').value.trim(),
+          projectName: document.getElementById('projectName').value.trim(),
+          niche: document.getElementById('projectNiche').value.trim(),
+          essence: document.getElementById('projectEssence').value.trim(),
+          audience: document.getElementById('targetAudience').value.trim(),
+          mainGoal: document.getElementById('mainGoal').value.trim(),
+          tones,
+          colorPrefs: document.getElementById('colorPrefs').value.trim(),
+          references: document.getElementById('references').value.trim(),
+          socialLinks: collectSocialLinks(),
+          clientServices: collectClientServices(),
+          legalInfo: document.getElementById('legalInfo')?.value.trim() || '',
+          siteSpec: (selectedType === 'site' || selectedType === 'storefront' || selectedType === 'custom') ? {
+            blocks: siteBlocks,
+            leadDestination: document.getElementById('siteLeadDestination').value.trim(),
+            hosting: document.getElementById('siteHosting').value
+          } : null,
+          inviteSpec: selectedType === 'invite' ? {
+            date: document.getElementById('inviteDate').value.trim(),
+            venue: document.getElementById('inviteVenue').value.trim(),
+            timeline: document.getElementById('inviteTimeline').value.trim(),
+            rsvpFields: inviteRsvp
+          } : null,
+          botSpec: (selectedType === 'bot' || selectedType === 'custom') ? {
+            features: botFeatures,
+            knowledge: document.getElementById('botKnowledge').value.trim(),
+            guardrails: document.getElementById('botGuardrails').value.trim(),
+            output: document.getElementById('botOutput').value.trim()
+          } : null,
+          customSpec: selectedType === 'custom' ? document.getElementById('customSpec').value.trim() : '',
+          materialsState: document.getElementById('materialsState').value,
+          deadline: document.getElementById('deadlineTarget').value.trim(),
+          budget: Number(document.getElementById('budgetEstimate').value) || 0,
+          materialsLink: document.getElementById('materialsLink').value.trim(),
+          status: 'submitted',
+          archived: false,
+          consentAccepted: true,
+          consentTimestamp: new Date().toISOString(),
+          createdAt: Date.now(),
+          updatedAt: Date.now()
+        };
+
+        data.aiPromptMarkdown = buildMarkdownSpec(data, false);
+        data.clientDocMarkdown = buildMarkdownSpec(data, true);
+        return data;
+      }
+
+      function buildMarkdownSpec(d, forClient = false) {
+        const lines = [
+          `# Техническое задание: ${d.projectName || d.projectTypeLabel}`,
+          '',
+          `- **Тип проекта:** ${d.projectTypeLabel}`,
+          `- **Заказчик:** ${d.clientName || '—'} (${d.contact || '—'})`,
+          `- **Ниша / сфера:** ${d.niche || '—'}`,
+          `- **Ориентир бюджета:** ${d.budget ? d.budget.toLocaleString('ru-RU') + ' ₽' : 'по согласованию'}`,
+          `- **Желаемый срок:** ${d.deadline || 'по согласованию'}`,
+          '',
+          '## 1. Суть проекта и аудитория',
+          `- **Главная ценность / УТП:** ${d.essence || '—'}`,
+          `- **Целевая аудитория:** ${d.audience || '—'}`,
+          `- **Главное целевое действие:** ${d.mainGoal || '—'}`,
+          '',
+          '## 2. Визуальный стиль и референсы',
+          `- **Характер дизайна:** ${d.tones && d.tones.length ? d.tones.join(', ') : 'Спокойный минимализм'}`,
+          `- **Цвета и шрифты:** ${d.colorPrefs || 'на усмотрение дизайнера'}`,
+          `- **Референсы:** ${d.references || '—'}`,
+          ''
+        ];
+
+        if (d.clientServices && d.clientServices.length) {
+          lines.push('## Услуги, товары и цены заказчика');
+          d.clientServices.forEach((s, idx) => {
+            lines.push(`${idx + 1}. **${s.name || 'Услуга'}** — ${s.price || 'по договорённости'}${s.note ? ` (${s.note})` : ''}`);
+          });
+          lines.push('');
+        }
+
+        if (d.socialLinks && d.socialLinks.length) {
+          lines.push('## Площадки, сайты и контакты для кнопок');
+          d.socialLinks.forEach((link) => {
+            lines.push(`- **${link.platform}:** ${link.url}`);
+          });
+          lines.push('');
+        }
+
+        if (d.siteSpec) {
+          lines.push('## 3. Структура сайта');
+          lines.push(`- **Разделы и блоки:** ${d.siteSpec.blocks.length ? d.siteSpec.blocks.join('; ') : 'базовая структура'}`);
+          lines.push(`- **Приём заявок:** ${d.siteSpec.leadDestination || 'Telegram / форма'}`);
+          lines.push(`- **Хостинг:** ${d.siteSpec.hosting || 'GitHub Pages'}`);
+          lines.push('');
+        }
+
+        if (d.inviteSpec) {
+          lines.push('## 3. Параметры приглашения');
+          lines.push(`- **Дата и время:** ${d.inviteSpec.date || '—'}`);
+          lines.push(`- **Площадка и адрес:** ${d.inviteSpec.venue || '—'}`);
+          lines.push(`- **Тайминг и дресс-код:** ${d.inviteSpec.timeline || '—'}`);
+          lines.push(`- **Поля RSVP-анкеты:** ${d.inviteSpec.rsvpFields.length ? d.inviteSpec.rsvpFields.join(', ') : 'подтверждение участия'}`);
+          lines.push('');
+        }
+
+        if (d.botSpec) {
+          lines.push('## 3. Логика Telegram-бота / ИИ-агента');
+          lines.push(`- **Функции бота:** ${d.botSpec.features.length ? d.botSpec.features.join('; ') : '—'}`);
+          lines.push(`- **База знаний / прайс:** ${d.botSpec.knowledge || '—'}`);
+          lines.push(`- **Ограничения (guardrails):** ${d.botSpec.guardrails || 'отвечать строго по материалам заказчика'}`);
+          lines.push(`- **Куда отправлять заявки:** ${d.botSpec.output || 'Telegram'}`);
+          lines.push('');
+        }
+
+        if (d.customSpec) {
+          lines.push('## Индивидуальная механика');
+          lines.push(d.customSpec);
+          lines.push('');
+        }
+
+        lines.push('## 4. Материалы и требования к реализации');
+        lines.push(`- **Готовность контента:** ${d.materialsState}`);
+        if (d.legalInfo) lines.push(`- **Реквизиты / 152-ФЗ:** ${d.legalInfo}`);
+        lines.push(`- **Ссылки и комментарии:** ${d.materialsLink || '—'}`);
+        lines.push('- **Адаптивность:** корректная работа на смартфонах (iOS/Android) и десктопе.');
+        if (!forClient) {
+          lines.push('- **Задача для ИИ:** подготовь структуру, живые тексты без воды и чистый адаптивный код строго по этому ТЗ.');
+        }
+
+        return lines.join('\n');
+      }
+
+      document.getElementById('tzForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (document.getElementById('tzHoneypot').value.trim()) return;
+
+        const errBox = document.getElementById('tzError');
+        errBox.classList.add('hidden');
+
+        const nameVal = document.getElementById('clientName').value.trim();
+        const contactVal = document.getElementById('clientContact').value.trim();
+        const consent = document.getElementById('tzConsent').checked;
+
+        if (nameVal.length < 2 || contactVal.length < 3) {
+          errBox.textContent = 'Пожалуйста, укажите имя и контакт для связи.';
+          errBox.classList.remove('hidden');
+          return;
+        }
+        if (!consent) {
+          errBox.textContent = 'Пожалуйста, отметьте согласие на обработку персональных данных.';
+          errBox.classList.remove('hidden');
+          return;
+        }
+
+        const btn = document.getElementById('tzSubmitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Сохраняем ТЗ...';
+
+        const brief = collectBriefData();
+        let savedId = 'brief-' + Date.now();
+        let sentToCloud = false;
+        let cloudError = '';
+        const apiUrl = getYandexApiUrl();
+
+        if (apiUrl) {
+          try {
+            const res = await fetch(apiUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'create_brief',
+                website_url: document.getElementById('tzHoneypot').value.trim(),
+                brief
+              })
+            });
+            const data = await res.json().catch(() => ({}));
+            if (res.ok && data && data.ok) {
+              sentToCloud = true;
+              if (data.id) savedId = data.id;
+              if (data.leadId && !brief.leadId) brief.leadId = data.leadId;
+            } else {
+              cloudError = (data && data.error) || ('HTTP ' + res.status);
+              console.warn('Yandex Cloud brief save rejected:', cloudError);
+            }
+          } catch (err) {
+            cloudError = (err && err.message) ? err.message : 'network error';
+            console.warn('Yandex Cloud brief save error:', err);
+          }
+        }
+
+        try {
+          const localBriefs = JSON.parse(localStorage.getItem('ai_crm_briefs') || '[]');
+          const savedLeadId = brief.leadId || ('lead-' + Date.now());
+          localBriefs.unshift(Object.assign({ id: savedId, leadId: savedLeadId }, brief));
+          localStorage.setItem('ai_crm_briefs', JSON.stringify(localBriefs));
+
+          const localLeads = JSON.parse(localStorage.getItem('ai_crm_leads') || '[]');
+          const existsLead = localLeads.some(l => l.id === savedLeadId);
+          if (!existsLead) {
+            localLeads.unshift({
+              id: savedLeadId,
+              briefId: savedId,
+              name: brief.clientName,
+              contact: brief.contact,
+              service: `ТЗ · ${brief.projectTypeLabel || 'Проект'}`,
+              price: Number(brief.budget) || 2900,
+              status: 'new',
+              details: brief.essence || brief.mainGoal || 'Клиент заполнил подробное ТЗ',
+              brief: {
+                format: brief.projectTypeLabel || '',
+                goal: brief.mainGoal || '',
+                examples: brief.colorPrefs || '',
+                materials: brief.materialsState || ''
+              },
+              notes: 'Создано автоматически при отправке подробного ТЗ',
+              consentAccepted: true,
+              consentDocVersion: brief.consentDocVersion || 'Политика и Согласие от 24.11.2026',
+              consentTimestamp: brief.consentTimestamp || new Date().toISOString(),
+              createdAt: brief.createdAt || Date.now()
+            });
+            localStorage.setItem('ai_crm_leads', JSON.stringify(localLeads));
+          }
+        } catch {}
+
+        lastSavedBrief = Object.assign({ id: savedId }, brief);
+        btn.disabled = false;
+        btn.textContent = 'Отправить ТЗ';
+
+        const subEl = document.getElementById('tzSuccessSubtitle');
+        if (subEl) {
+          if (sentToCloud) {
+            subEl.textContent = 'Я уже получила все ответы и скоро свяжусь с вами для подтверждения стоимости и старта. Ниже вы можете скачать готовую копию ТЗ в виде документа.';
+          } else if (cloudError) {
+            subEl.textContent = 'ТЗ сформировано и сохранено в браузере, но отправка на сервер не прошла (' + cloudError + '). Скачайте копию ниже и отправьте её мне в Telegram.';
+          } else {
+            subEl.textContent = 'ТЗ сформировано и сохранено в вашем браузере (сервер не подключён). Скачайте файл ниже и отправьте его мне в Telegram.';
+          }
+        }
+
+        document.getElementById('tzForm').classList.add('hidden');
+        document.getElementById('tzSuccessCard').classList.remove('hidden');
+        document.getElementById('tzPreviewPre').textContent = brief.clientDocMarkdown || buildMarkdownSpec(brief, true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      window.downloadCurrentBriefMd = function () {
+        const b = lastSavedBrief || collectBriefData();
+        const blob = new Blob([b.clientDocMarkdown || b.aiPromptMarkdown], { type: 'text/markdown;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `tz-${(b.projectName || b.clientName || 'project').toLowerCase().replace(/[^a-zа-яё0-9]+/gi, '-')}.md`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+
+      window.downloadCurrentBriefDoc = function () {
+        const b = lastSavedBrief || collectBriefData();
+        const clientText = (b.clientDocMarkdown || buildMarkdownSpec(b, true))
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const htmlDoc = `
+          <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+          <head><meta charset='utf-8'><title>ТЗ</title></head>
+          <body style="font-family: Arial, sans-serif; line-height: 1.55; color: #17191c;">
+            <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">${clientText}</pre>
+          </body></html>`;
+        const blob = new Blob(['\ufeff', htmlDoc], { type: 'application/msword;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `tz-${(b.projectName || b.clientName || 'project').toLowerCase().replace(/[^a-zа-яё0-9]+/gi, '-')}.doc`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+
+      window.copyCurrentBriefPrompt = function () {
+        const b = lastSavedBrief || collectBriefData();
+        const text = b.clientDocMarkdown || b.aiPromptMarkdown;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text);
+        }
+      };
+    })();
+  </script>
+</body>
+</html>
